@@ -42,5 +42,12 @@ with DAG(
         task_id="t8"
     )
 
-t1 >> [t2, t3] >> t4 << t5
+t1 >> [t2, t3] >> t4 << t5 # 같은 레벨에서 수행되는 task는 리스트로 묶을 수 있음
 [t4, t7] >> t6 >> t8
+
+
+# t1 >> [t2,t3]
+# t3 << t4
+
+# t1.set_downstream(t2, t3)
+# t3.set_upstream(t4)
