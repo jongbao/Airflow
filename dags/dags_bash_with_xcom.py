@@ -24,6 +24,7 @@ with DAG(
             'RETURN_VALUE':"{{ ti.xcom_pull(task_ids='bash_push') }}"}, # return_value 찾아오겠다
         bash_command="echo $PUSHED_VALUE && echo $RETURN_VALUE",
         do_xcom_push=False # 자동으로 return_value으로 간주되고 Xcom에 저장하는 것을 막음 default=True
+        # True로 하면 bash_command의 출력값이 Xcom으로 올라감
     )
 
     bash_push >> bash_pull
