@@ -20,10 +20,10 @@ with DAG(
 
     bash_pull = BashOperator(
         task_id='bash_pull',
-        env={'PUSHED_VALUE':"{{ ti.xcom_pull(key='bash_pushed) }}",
-            'RETURN_VALUE':"{{ ti.xcom_pull(task_ids='bash_push') }}"},
+        env={'PUSHED_VALUE':"{{ ti.xcom_pull(key='bash_pushed') }}",
+            'RETURN_VALUE':"{{ ti.xcom_pull(task_ids='bash_push') }}"}, # return_value 찾아오겠다
         bash_command="echo $PUSHED_VALUE && echo $RETURN_VALUE",
-        do_xcom_push=False
+        do_xcom_push=False # 자동으로 return_value으로 간주되고 Xcom에 저장하는 것을 막음 default=True
     )
 
     bash_push >> bash_pull
