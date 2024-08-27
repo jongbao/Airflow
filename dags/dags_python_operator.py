@@ -10,6 +10,7 @@ with DAG(
     start_date=pendulum.datetime(2023, 3, 1, tz="Asia/Seoul"),
     catchup=False
 ) as dag:
+    
     def select_fruit():
         fruit = ['APPLE', 'BANANA', 'ORANGE', 'AVOCADO']
         rand_int = random.randint(0,3) # 0 ~ 3 까지 임의의 숫자 반환
