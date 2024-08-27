@@ -38,7 +38,7 @@ with DAG(
     @task(task_id='python_pull')
     def python_pull_xcom(**kwargs):
         ti = kwargs['ti']
-        status_value = ti.xom_pull(key='bash_pushed')
+        status_value = ti.xcom_pull(key='bash_pushed')
         return_value = ti.xcom_pull(task_ids='bash_push')
         print('status_value:' + str(status_value))
         print('return_value:' + return_value)
