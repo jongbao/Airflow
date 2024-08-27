@@ -7,7 +7,7 @@ import datetime
 with DAG(
     dag_id='dags_bash_with_macro_eg1',
     schedule='10 0 L * *', # 매 월 말일 0시 10분
-    start_date=pendulum.datetime(2024,8,1,tz='Asia/Seoul'),
+    start_date=pendulum.datetime(2024,8,5,tz='Asia/Seoul'),
     catchup=False
 ) as dag:
     # START_DATE: 전월 말일, END_DATE: 1일 전
