@@ -19,10 +19,8 @@ with DAG(
         bash_command=f'echo variable: {var_value}'
     )
 
-    # 2. 템플릿 변수 사용
+    # 2. 템플릿 변수 사용 (var.value.~~~ 형태로 작성)
     bash_var_2 = BashOperator(
         task_id = 'bash_var_2',
         bash_command="echo variable: {{var.value.sample_key}}"
     )
-
-    bash_var_1 >> bash_var_2
