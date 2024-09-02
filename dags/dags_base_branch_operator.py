@@ -13,6 +13,7 @@ with DAG(
     
     # class = 설계도 생성, BaseBranchOperator 부모클래스 상속받음
     class CustomBranchOperator(BaseBranchOperator):
+        # 메서드 재정의 = 오버라이딩
         def choose_branch(self, context):
             import random
             print(context)
