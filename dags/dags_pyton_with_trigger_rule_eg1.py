@@ -23,10 +23,10 @@ with DAG(
     
     @task(task_id='python_upstream_2')
     def python_upstream_2():
-        raise print('정상 처리')
+        return print('정상 처리')
     
     @task(task_id='python_downstream_1', trigger_rule='all_done')
     def python_downstream_1():
-        raise print('정상 처리')
+        return print('정상 처리')
     
     [bash_upstream_1, python_upstream_1(), python_upstream_2()] >> python_downstream_1()

@@ -31,14 +31,14 @@ with DAG(
 
     @task(task_id='task_b')
     def task_b():
-        raise print('정상 처리')
+        return print('정상 처리')
     
     @task(task_id='task_c')
     def task_c():
-        raise print('정상 처리')
+        return print('정상 처리')
 
     @task(task_id='task_d', trigger_rule='non_skipped')
     def task_d():
-        raise print('정상 처리')
+        return print('정상 처리')
     
     random_branch >> [task_a, task_b(), task_c()] >> task_d()
