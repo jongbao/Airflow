@@ -37,7 +37,7 @@ with DAG(
     def task_c():
         return print('정상 처리')
 
-    @task(task_id='task_d', trigger_rule='non_skipped')
+    @task(task_id='task_d', trigger_rule='none_skipped')
     def task_d():
         return print('정상 처리')
     
