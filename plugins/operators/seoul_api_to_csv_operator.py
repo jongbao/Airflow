@@ -36,11 +36,11 @@ class SeoulApiToCsvOperator(BaseOperator):
             row_df = self._call_api(self.base_url, start_row, end_row)
             total_row_df = pd.concat([total_row_df, row_df])
             self.log.info(len(total_row_df))
-            # if len(total_row_df) < 1000:
-            #     break
-            # else:
-            start_row = end_row + 1
-            end_row += 1000
+            if len(total_row_df) < 1000:
+                break
+            else:
+                start_row = end_row + 1
+                end_row += 1000
 
         if not os.path.exists(self.path):
             os.system(f'mkdir -p {self.path}')
