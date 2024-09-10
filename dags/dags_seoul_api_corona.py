@@ -6,7 +6,8 @@ from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 
 with DAG(
     dag_id="dags_seoul_api_corona",
-    schedule='0 7 * * *',
+    # schedule='0 7 * * *',
+    schedule=None,
     start_date=pendulum.datetime(2024, 8, 1, tz="Asia/Seoul"),
     catchup=False
 ) as dag:
