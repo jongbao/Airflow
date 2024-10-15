@@ -11,7 +11,7 @@ with DAG(
     
 
     def insrt_postgres(ip, port, dbname, user, passwd, **kwargs):
-        import psycopg2
+        import psycopg2 
         from contextlib import closing
 
         with closing(psycopg2.connect(host=ip, dbname=dbname, user=user, password=passwd, port=int(port))) as conn:
@@ -20,8 +20,8 @@ with DAG(
                 task_id = kwargs.get('ti').task_id
                 run_id = kwargs.get('ti').run_id
                 msg = 'insrt 수행'
-                sql = 'insert into py_opr_drct_insrt values (%s, %s, %s, %s);'
-                cursor.execute(sql, (dag_id,task_id,run_id,msg))
+                sql = 'insert into py_opr_drct_insrt values (%s,%s,%s,%s);'
+                cursor.execute(sql,(dag_id,task_id,run_id,msg))
                 conn.commit()
 
     insrt_postgres = PythonOperator(
