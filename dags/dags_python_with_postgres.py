@@ -6,7 +6,7 @@ with DAG(
     dag_id='dags_python_with_postgres',
     start_date = pendulum.datetime(2024,10,1, tz='Asia/Seoul'),
     schedule=None,
-    catchup=None
+    catchup=False
 ) as dag:
     
 
@@ -24,10 +24,10 @@ with DAG(
                 cursor.execute(sql,(dag_id,task_id,run_id,msg))
                 conn.commit()
 
-    insrt_postgres_task = PythonOperator(
-        task_id='insrt_postgres_task',
+    insrt_postgres = PythonOperator(
+        task_id='insrt_postgres',
         python_callable=insrt_postgres,
         op_args=['172.28.0.3', '5432', 'jmjeon', 'jmjeon', 'jmjeon']
     )
 
-    insrt_postgres_task
+    insrt_postgres
