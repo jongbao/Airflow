@@ -24,10 +24,10 @@ with DAG(
                 cursor.execute(sql,(dag_id,task_id,run_id,msg))
                 conn.commit()
 
-    insrt_postgres = PythonOperator(
-        task_id='insrt_postgres',
+    insrt_postgres_task = PythonOperator(
+        task_id='insrt_postgres_task',
         python_callable=insrt_postgres,
         op_args=['172.28.0.3', '5432', 'jmjeon', 'jmjeon', 'jmjeon']
     )
 
-    insrt_postgres
+    insrt_postgres_task
