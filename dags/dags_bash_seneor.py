@@ -34,10 +34,10 @@ with DAG(
                         else 
                             exit 1
                         fi''',
-        poke_interval=30,
-        timeout=60*2,
+        poke_interval=60*2,
+        timeout=60*3,
         mode='reschedule',
-        soft_fail=False
+        soft_fail=True
     )
 
     bash_task = BashOperator(
